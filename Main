@@ -1,0 +1,23 @@
+import string
+text= open("Hamlet.txt","r")
+d=dict()
+punc=string.punctuation
+for line in text:
+    line=line.lower()
+    for x in punc:
+        line=line.replace(x,"")
+    line=line.strip()
+    words=line.split()
+
+    for word in words:
+        if word in d:
+            d[word]=d[word]+1
+        else:
+            d[word]=1
+for w in sorted(d, key=d.get, reverse=True):
+    print(w, d[w])
+y=" "
+print("Enter stop! to exit terminal.")
+while(y!="stop!"):
+    y=str(input("Enter a word to see the number of occurrences of it. "))
+    print(d[y])
